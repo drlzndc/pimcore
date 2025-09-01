@@ -1,0 +1,2 @@
+# Runs process manager jobs
+* * * * * php /var/www/html/bin/console process-manager:maintenance

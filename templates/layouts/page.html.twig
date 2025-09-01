@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    {%
+        do pimcore_head_link().appendStylesheet(
+            'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css'
+        )
+    %}
+    {%
+        do pimcore_head_link().appendStylesheet(
+            asset('static/css/layouts/page.css')
+        )
+    %}
+    {% if editmode %}
+        {% do pimcore_head_link().appendStylesheet(asset('static/css/editmode.css')) %}
+    {% endif %}
+
+    {%
+        do pimcore_head_script().appendFile(
+            'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'
+        )
+    %}
+    {%
+        do pimcore_head_script().appendFile(
+            asset('static/js/html5shiv.js'),
+            'text/javascript',
+            {'conditional': 'lt IE 9'}
+        ) | raw
+    %}
+
+    {{ pimcore_head_link() }}
+    {{ pimcore_head_script() }}
+</head>
+
+<body>
+    <!-- header -->
+    <div class="container header-container">
+        <header class="d-flex flex-wrap align-items-center justify-content-between py-4">
+            <div class="logo-wrapper">
+                <h1><a href="/">Company Logo</a></h1>
+                <span>HTML5 Website Template<span>
+            </div>
+            
+            <nav class="page-links">
+                {% set homeDocument = pimcore_document(1) %}
+                {%
+                    set nav = pimcore_build_nav({
+                        active: document,
+                        root: homeDocument
+                    }) 
+                %}
+                {{ pimcore_render_nav(nav, 'menu') | raw }}
+            </nav>
+        </header>
+    </div>
+
+    <!-- content -->
+    <div class="container content-wrapper">
+        <div class="container inner-content-wrapper">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <!-- footer -->
+    <div class="column footer-wrapper mt-4">
+        <footer>
+            <div class="row links-wrapper">
+                {{ pimcore_snippet('footer') }}
+            </div>
+
+            <div class="row copyright-wrapper">
+                <div class="col-12 p-4">
+                    <span>
+                        Copyright &copy; {{ 'now'|date('Y') }}
+                        - All Rights Reserved
+                        - <a href="#">{{ app.request.getHost() }}</a>
+                    </span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+pimcore:
+    objects:
+        select_options:
+            definitions:
+                ProductStatus:
+                    id: ProductStatus
+                    group: ''
+                    useTraits: ''
+                    implementsInterfaces: ''
+                    selectOptions:
+                        -
+                            value: active
+                            label: Active
+                            name: active
+                        -
+                            value: inactive
+                            label: Inactive
+                            name: inactive

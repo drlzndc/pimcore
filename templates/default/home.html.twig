@@ -1,0 +1,38 @@
+{% extends 'layouts/page.html.twig' %}
+
+{%
+    do pimcore_head_link().appendStylesheet(
+        asset('static/css/pages/home.css')
+    )
+%}
+
+{% block title %}App | Home{% endblock %}
+
+{% block content %}
+    <div class="px-4 {% if not editmode %}row{% endif %} justify-content-center hero-wrapper">
+        {{ pimcore_area('heroTeaserArea', {type: 'hero-teaser'}) }}
+    </div>
+
+    <div class="mb-4 row justify-content-center justify-content-md-center">
+        {% for story in stories %}
+            <article class="col-6 col-md-4 col-lg-4">
+                <figure class="mx-auto d-flex flex-column align-items-center">
+                    <div class="p-1">
+                        <img src="{{ story.image }}">
+                    </div>
+                    <figcaption class="figure-caption text-start p-1" style="width: 90%">
+                        <h2 class="mt-0 mt-md-0">{{ story.title }}</h2>
+                        <p>{{ story.summary }}</p>
+                        <footer>
+                            <a href="/news/{{ story.slug }}">Read More &raquo;</a>
+                        </footer>
+                    </figcaption>
+                </figure>
+            </article>
+        {% endfor %}
+    </div>
+
+    <div class="mb-4 container justify-content-between">
+        {{ pimcore_area('featuretteArea', {type: 'featurette'}) }}
+    </div>
+{% endblock %}

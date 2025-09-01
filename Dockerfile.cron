@@ -1,0 +1,25 @@
+FROM alpine:latest
+
+# Install required libraries
+RUN apk add --no-cache \
+    php83 \
+    php83-common \
+    php83-cli \
+    php83-dom \
+    php83-fileinfo \
+    php83-iconv \
+    php83-mbstring \
+    php83-opcache \
+    php83-pdo \
+    php83-pdo_mysql \
+    php83-simplexml \
+    php83-xml \
+    php83-zip \
+    rsync
+
+# Copy crontab
+WORKDIR /var/www/html
+COPY crontab /tmp/crontab.tmp
+
+# Run the cron daemon
+CMD ["/bin/sh", "-c", "crontab /tmp/crontab.tmp && crond -f"]

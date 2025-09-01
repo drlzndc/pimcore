@@ -1,0 +1,144 @@
+/* variables */
+
+:root {
+    --border-color: #D6D6D6;
+    --border-color-muted: #555555;
+    --background-white: #FFF;
+    --background-dark: #333333;
+    --background-darker: #232323;
+    --text-gray: #C0BAB6;
+    --text-dark-gray: #979797;
+    --text-green: #93bd32;
+    --text-white: #FFF;
+    --font-size-logo: 2.25rem;
+    --font-size-title: 2rem;
+    --font-size-overlay: 1.5rem;
+    --font-size-news-title: 0.875rem;
+    --font-size-standard: 13px;
+    --font-size-small: 0.75rem;
+    --font-family-standard: Georgia, "Times New Roman", Times, serif;
+    --max-width: 60rem;
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --font-size-standard: 12px;
+    --font-size-title: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  :root {
+    --font-size-standard: 10px;
+    --font-size-title: 1.25rem;
+  }
+}
+
+
+
+/* global element rules */
+
+body {
+    color: var(--text-gray);
+    background: var(--background-dark);
+    font-size: var(--font-size-standard);
+    font-family: var(--font-family-standard);
+}
+
+h1,
+h2 {
+    margin: 0;
+    padding: 0;
+}
+
+a,
+a:hover {
+    color: unset;
+    outline: none;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--text-green);
+}
+
+figure {
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* specific element rules */
+
+/* header */
+
+.header-container {
+    background: var(--background-dark);
+}
+
+.logo-wrapper h1 {
+    font-size: var(--font-size-logo);
+}
+
+.page-links {
+    background: var(--background-darker);
+}
+
+.page-links ul {
+    margin: 0;
+    padding: 1rem;
+}
+
+.page-links li {
+    display: inline;
+    margin: 0 12px;
+    text-transform: uppercase;
+}
+
+/* content */
+
+.content-wrapper {
+    background: var(--background-white);
+}
+
+.inner-content-wrapper {
+    padding: 30px 0;
+}
+
+/* footer */
+
+.footer-wrapper {
+    background: var(--background-dark);
+}
+
+.links-wrapper {
+    font-size: var(--font-size-small);
+    line-height: 1.4em;
+}
+
+.links-wrapper h2 {
+    color: var(--text-white);
+    background-color: var(--background-dark);
+    font-size: var(--font-size-small);
+    font-style: italic;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.links-wrapper li {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--border-color-muted);
+}
+
+.links-wrapper a {
+    color: var(--text-green);
+}
+
+.copyright-wrapper {
+    background: var(--background-darker);
+}

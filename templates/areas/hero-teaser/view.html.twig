@@ -1,0 +1,21 @@
+{% set image = pimcore_image('heroImage') %}
+{% set text = pimcore_input('heroText', {'placeholder': 'Text overlay'}) %}
+
+{% if editmode %}
+    <div>
+        <div>{{ image|raw }}</div>
+        <br/>
+
+        <div>{{ text|raw }}</div>
+        <br/>
+        <br/>
+    </div>
+{% else %}
+    <div class="hero-image">
+        {{ image|raw }}
+    </div>
+    
+    <div class="hero-text">
+        {{ text }}
+    </div>
+{% endif %}

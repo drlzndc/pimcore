@@ -1,0 +1,5 @@
+elements_process_manager:
+  archiveThresholdLogs: 14
+  processTimeoutMinutes: 60
+  disableShortcutMenu: false
+  additionalScriptExecutionUsers: ["www-data", "pimcore"]

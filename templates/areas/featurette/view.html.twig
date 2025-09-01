@@ -1,0 +1,34 @@
+{%
+    set positionSelect = pimcore_select(
+        'position',
+        {
+            store: [["left", "left"], ["right", "right"]],
+            reload: true,
+            class: 'align-middle'
+        }
+    )
+%}
+{% set position = positionSelect.getData() | default('left') %}
+
+{% if editmode %}
+    <div class="mb-3">
+        <span class="editmode-label align-middle">Text on the</span>
+        {{ positionSelect | raw }}
+    </div>
+{% endif %}
+
+<div class="row">
+    <div class="col-12 col-sm-6 {{ position == 'right' ? 'order-2' : '' }}">
+        <h2 class="featurette-headline">
+            {{ pimcore_input('headline', {placeholder: 'Headline'}) }}
+        </h2>
+
+        <div class="featurette-content">
+            {{ pimcore_wysiwyg('content', {height: 200}) }}
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-6 align-content-center {{ position == 'right' ? 'order-1' : '' }}">
+        {{ pimcore_image('image') }}
+    </div>
+</div>

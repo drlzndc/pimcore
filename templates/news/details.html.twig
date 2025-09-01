@@ -1,0 +1,15 @@
+{% extends 'layouts/page.html.twig' %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+    <div class="row2">
+        <div id="container" class="clear center">
+            <img src="{{story.image}}">
+            <h1>{{ story.title }}</h1>
+
+            <p>{{ story.summary }}</p>
+            <div>{{ story.content|raw }}</div>
+        </div>
+    </div>
+{% endblock %}

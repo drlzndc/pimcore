@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row">
+        {% if editmode %}
+            <h2 class="float-left">{{ 'Footer Column(s):' }}</h2>
+        {% endif %}
+
+        {% for i in pimcore_iterate_block(pimcore_block('mainlinkblock')) %}
+            <div class="col-4 col-md-3">
+                <h2 class="title p-0 mb-4">{{ pimcore_input('mainBlockTitle', {'placeholder': 'Footer Title'}) }}</h2>
+                <ul class="list-unstyled text-small">
+                    {% for i in pimcore_iterate_block(pimcore_block('linkblock')) %}
+                        <li>{{ pimcore_link('myLink') }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% if editmode %}
+                <hr />
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
